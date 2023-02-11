@@ -58,6 +58,7 @@ module.exports = {
   },
   rules: {
     'no-console': 'off',
+    'vue/multi-word-component-names': 'off',
     'prettier/prettier': [
       'error',
       {
@@ -69,6 +70,7 @@ module.exports = {
         printWidth: 80,
         bracketSpacing: true,
         arrowParens: 'avoid',
+        endOfLine: 'auto',
         bracketSameLine: true,
         singleAttributePerLine: true,
         htmlWhitespaceSensitivity: 'ignore'
@@ -78,8 +80,18 @@ module.exports = {
 }
 ```
 
+## 🌭 추가 라이브러리
+개발에 편의를 돕는 js 라이브러리들을 추가한다. Vuex와 Vue-router는 Vue2를 사용하므로 버전을 지정한다.
+```shell
+npm i vuex@3.6.2
+npm i vue-router@3.6.5
+npm i axios
+npm i dayjs
+npm i lodash
+```
 
-## 추가 라이브러리
+## 🍿 디렉토리 구조
+
 
 
 ## Docker 파일 & Jenkins 파일

@@ -100,6 +100,7 @@ npm i lodash
 +-- router (Vue-router)
 |   +-- routes
 +-- store (Vuex)
+|   +-- modules
 +-- utils (자주사용하는 공통 function)
 +-- views (화면 Vue 컴포넌트)
 |   +-- components

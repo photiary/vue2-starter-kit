@@ -1,11 +1,12 @@
-const getDefaultState = () => {
-  return {}
-}
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-export default {
-  namespaced: true,
-  state: getDefaultState(),
-  getters: {},
-  mutations: {},
-  actions: {}
-}
+// modules
+import auth from './modules/auth'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {},
+  modules: { auth }
+})

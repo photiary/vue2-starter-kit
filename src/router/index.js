@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 
 // routes
 import home from './routes/home'
+import auth from './routes/auth'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: { name: 'home' } },
+  ...auth,
   ...home,
   {
     path: '*',
@@ -15,9 +17,7 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+export default new VueRouter({
   mode: 'history',
   routes
 })
-
-export default router

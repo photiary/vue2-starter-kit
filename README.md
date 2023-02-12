@@ -100,7 +100,7 @@ npm i lodash
 ```
 +-- api (Server API 호출)
 +-- mock (테스트 API) 
-|   +-- data
+|   +-- data (테스트 데이터)
 +-- router (Vue-router)
 |   +-- routes
 +-- store (Vuex)

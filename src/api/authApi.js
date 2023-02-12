@@ -1,9 +1,13 @@
 import axiosInstances from './common/axiosInstances'
 
+/**
+ * 로그인을 진행한다.
+ *
+ * Mock 파일(/mock/data/auth.js > simple.onGet('/login'))
+ * @returns {Object} 로그인 성공할 경우 인증 토큰을 응답
+ */
 function login() {
-  const response = axiosInstances.simple.get('/login')
-  console.log('authApi.login response:', response)
-  return response
+  return axiosInstances.simple.get('/login')
 }
 
 export default { login }

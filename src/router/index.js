@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // routes
-import home from './routes/home'
 import auth from './routes/auth'
+import home from './routes/home'
 
 Vue.use(VueRouter)
 

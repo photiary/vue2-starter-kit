@@ -2,15 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // routes
-import auth from './routes/auth'
-import home from './routes/home'
+import authRoute from './routes/authRoute'
+import homeRoute from './routes/homeRoute'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: { name: 'home' } },
-  ...auth,
-  ...home,
+  ...authRoute,
+  ...homeRoute,
   {
     path: '*',
     redirect: 'error-404'

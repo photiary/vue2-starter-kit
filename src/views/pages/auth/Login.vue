@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import authApi from '@/api/authApi'
+import authApi from '@/axios/api/authApi'
 
 export default {
   // 전역 인지(Global Awareness) (컴포넌트 바깥의 지식을 필요로 하는 옵션)

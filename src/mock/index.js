@@ -1,7 +1,7 @@
 // Mock data
-import auth from './data/auth'
+import authData from './data/authData'
 
-const dataList = [auth]
+const dataList = [authData]
 
 if (JSON.parse(process.env.VUE_APP_USE_MOCK)) {
   dataList.forEach(data => data.init())

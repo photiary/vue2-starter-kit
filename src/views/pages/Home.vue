@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import accountApi from '@/axios/api/accountApi'
 export default {
   // 전역 인지(Global Awareness) (컴포넌트 바깥의 지식을 필요로 하는 옵션)
   name: 'Home',
@@ -16,13 +17,19 @@ export default {
   props: {},
   // 지역 상태(Local State) (반응적인 지역 속성들을 설정하는 옵션)
   data() {
-    return {}
+    return {
+      account: null
+    }
   },
   computed: {},
   // 이벤트(Events) (반응적인 이벤트에 의해 실행되는 콜백을 지정하는 옵션)
   watch: {},
   beforeCreate() {},
-  created() {},
+  async created() {
+    const resAccount = await accountApi.fetchAccount()
+    console.log('Home.created resAccount:', resAccount)
+    this.account = resAccount.data
+  },
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},

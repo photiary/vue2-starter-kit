@@ -8,5 +8,5 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {},
-  modules: { auth: authModule }
+  modules: { authModule }
 })

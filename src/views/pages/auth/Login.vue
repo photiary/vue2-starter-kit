@@ -48,10 +48,15 @@ export default {
   destroyed() {},
   // 비반응적 속성(Non-Reactive Properties) (시스템의 반응성과 관계 없는 인스턴스 속성을 지정하는 옵션)
   methods: {
-    login() {
-      authApi.login().then(response => {
-        console.log('Login.login response:', response)
-      })
+    async login() {
+      try {
+        const resToken = await authApi.login(this.id, this.password)
+        console.log('Login.login resToken:', resToken)
+        this.$store.commit('authModule/SET_TOKEN', resToken.data)
+        await this.$router.push({ name: 'home' })
+      } catch (error) {
+        console.log('Login.login error', error)
+      }
     }
   }
 }

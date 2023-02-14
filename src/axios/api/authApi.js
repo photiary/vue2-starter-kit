@@ -3,11 +3,15 @@ import axiosInstances from '../axiosInstances'
 /**
  * 로그인을 진행한다.
  *
- * Mock 파일(/mock/data/authData.js > simple.onGet('/login'))
+ * Mock 파일(/mock/data/authData.js > noAuth.onPost('/login'))
  * @returns {Object} 로그인 성공할 경우 인증 토큰을 응답
  */
-function login() {
-  return axiosInstances.simple.get('/login')
+function login(id, password) {
+  const requestBody = {
+    id: id,
+    password: password
+  }
+  return axiosInstances.noAuth.post('/login', requestBody)
 }
 
 export default { login }

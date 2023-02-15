@@ -18,7 +18,7 @@ const data = {
 }
 
 function init() {
-  mockAdapters.noAuth.onPost('/login').reply(() => [200, data.token])
+  mockAdapters.basicAuth.onPost('/login').reply(() => [200, data.token])
 }
 
 export default { init }

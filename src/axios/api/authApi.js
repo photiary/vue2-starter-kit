@@ -11,7 +11,11 @@ function login(id, password) {
     id: id,
     password: password
   }
-  return axiosInstances.noAuth.post('/login', requestBody)
+  return axiosInstances.basicAuth.post('/login', requestBody)
 }
 
-export default { login }
+function logout() {
+  return axiosInstances.bearerToken.post('/logout')
+}
+
+export default { login, logout }

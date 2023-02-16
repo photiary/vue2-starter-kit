@@ -23,6 +23,7 @@ const router = new VueRouter({
   routes
 })
 
+// 참조 링크: https://v3.router.vuejs.org/guide/advanced/meta.html
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.anonymous)) {
     next()

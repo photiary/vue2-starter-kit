@@ -2,8 +2,9 @@ export default [
   {
     path: '/login',
     name: 'login',
+    // 인증없이 접근할 수 있는 조건
     meta: { anonymous: true },
     component: () =>
-      import(/* webpackChunkName: "home" */ '@/views/pages/auth/Login.vue')
+      import(/* webpackChunkName: "auth" */ '@/views/pages/auth/Login.vue')
   }
 ]

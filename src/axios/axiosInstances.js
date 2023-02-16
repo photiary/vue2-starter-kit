@@ -3,9 +3,7 @@ import store from '@/store/index'
 import authConstants from './authConstants'
 import errorHandlers from '@/axios/errorHandlers'
 
-/**
- * 참조 사이트: https://axios-http.com/kr/docs/instance
- */
+// 참조 링크: https://axios-http.com/kr/docs/instance
 function createSimpleInstance() {
   const axios = Axios.create({
     baseURL: process.env.VUE_APP_URL_SERVICE
@@ -15,9 +13,7 @@ function createSimpleInstance() {
   return axios
 }
 
-/**
- * 참조 사이트: https://axios-http.com/kr/docs/interceptors
- */
+// 참조 링크: https://axios-http.com/kr/docs/interceptors
 function addAuthInterceptor(axios, isBasicAuth) {
   // 요청 인터셉터 추가하기
   axios.interceptors.request.use(

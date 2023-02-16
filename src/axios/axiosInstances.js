@@ -8,7 +8,7 @@ function createSimpleInstance() {
   const axios = Axios.create({
     baseURL: process.env.VUE_APP_URL_SERVICE
   })
-  axios.defaults.headers.get['Accept'] = 'application/json, '
+  axios.defaults.headers.get['Accept'] = 'application/json'
   axios.defaults.headers.post['Content-Type'] = 'application/json'
   return axios
 }

@@ -6,5 +6,12 @@ export default [
     meta: { anonymous: true },
     component: () =>
       import(/* webpackChunkName: "auth" */ '@/views/pages/auth/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    meta: { anonymous: true },
+    component: () =>
+      import(/* webpackChunkName: "auth" */ '@/views/pages/auth/Register.vue')
   }
 ]

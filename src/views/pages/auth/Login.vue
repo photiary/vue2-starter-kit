@@ -1,15 +1,27 @@
 <template>
   <div>
-    <h1>Home</h1>
-    <p>{{ account }}</p>
+    id:
+    <input
+      type="text"
+      v-model="id" />
+    password:
+    <input
+      type="password"
+      v-model="password" />
+    <button
+      type="button"
+      @click="login()">
+      로그인
+    </button>
   </div>
 </template>
 
 <script>
-import accountApi from '@/axios/api/accountApi'
+import authApi from '@/axios/api/authApi'
+
 export default {
   // 전역 인지(Global Awareness) (컴포넌트 바깥의 지식을 필요로 하는 옵션)
-  name: 'Home',
+  name: 'Login',
   // 템플릿 의존성(Template Dependencies) (템플릿에 이용되는 요소들을 지정하는 옵션)
   components: {},
   // 컴포지션(Composition) (다른 컴포넌트의 속성을 가져와 합치는 옵션)
@@ -19,18 +31,15 @@ export default {
   // 지역 상태(Local State) (반응적인 지역 속성들을 설정하는 옵션)
   data() {
     return {
-      account: null
+      id: '',
+      password: ''
     }
   },
   computed: {},
   // 이벤트(Events) (반응적인 이벤트에 의해 실행되는 콜백을 지정하는 옵션)
   watch: {},
   beforeCreate() {},
-  async created() {
-    const resAccount = await accountApi.fetchAccount()
-    console.log('Home.created resAccount:', resAccount)
-    this.account = resAccount.data
-  },
+  created() {},
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
@@ -38,7 +47,18 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   // 비반응적 속성(Non-Reactive Properties) (시스템의 반응성과 관계 없는 인스턴스 속성을 지정하는 옵션)
-  methods: {}
+  methods: {
+    async login() {
+      try {
+        const resToken = await authApi.login(this.id, this.password)
+        console.log('Login.login resToken:', resToken)
+        this.$store.commit('authModule/SET_TOKEN', resToken.data)
+        await this.$router.push({ name: 'home' })
+      } catch (error) {
+        console.log('Login.login error', error)
+      }
+    }
+  }
 }
 </script>
 

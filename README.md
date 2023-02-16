@@ -81,22 +81,26 @@ module.exports = {
 ```
 
 ## 🌭 추가 패키지
-개발에 편의를 돕는 js 라이브러리들을 추가한다. Vuex와 Vue-router는 Vue2를 사용하므로 버전을 지정한다.
+개발에 편의를 돕는 js 라이브러리들을 추가한다. Vuex, Vue-router, vee-validate는 Vue2를 사용하므로 버전을 지정한다.
 ```shell
 npm i vuex@3.6.2
 npm i vuex-persist
 npm i vue-router@3.6.5
 npm i vee-validate@3.4.14
 npm i axios
+npm i axios-mock-adapter
+# URL querystring 확장 패키지 
 npm i qs
+# 날짜 패키지
 npm i dayjs
 npm i lodash
 ```
 
 ## 🍿 디렉토리 구조
-
 ```
 +-- api (Server API 호출)
++-- mock (테스트 API) 
+|   +-- data (테스트 데이터)
 +-- router (Vue-router)
 |   +-- routes
 +-- store (Vuex)
@@ -107,4 +111,6 @@ npm i lodash
 |   +-- pages
 ```
 
-## Docker 파일 & Jenkins 파일
+## 🥓 Axios & Mock
+
+## Docker & Jenkins

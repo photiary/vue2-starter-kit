@@ -2,32 +2,29 @@
   <div>
     <p>
       id:
-      <input
-        type="text"
-        v-model="id" />
+      <input v-model="id" />
+      이름:
+      <input v-model="name" />
       password:
-      <input
-        type="password"
-        v-model="password" />
+      <input v-model="password" />
+
       <button
         type="button"
-        @click="login()">
-        로그인
+        @click="register()">
+        등록
       </button>
-      <router-link :to="{ name: 'register' }">
-        <button type="button">회원가입</button>
-      </router-link>
     </p>
-    <p>{{ message }}</p>
+    <p>
+      {{ message }}
+    </p>
   </div>
 </template>
 
 <script>
-import authApi from '@/axios/api/authApi'
-
+import accountApi from '@/axios/api/accountApi'
 export default {
   // 전역 인지(Global Awareness) (컴포넌트 바깥의 지식을 필요로 하는 옵션)
-  name: 'Login',
+  name: 'Register',
   // 템플릿 의존성(Template Dependencies) (템플릿에 이용되는 요소들을 지정하는 옵션)
   components: {},
   // 컴포지션(Composition) (다른 컴포넌트의 속성을 가져와 합치는 옵션)
@@ -38,6 +35,7 @@ export default {
   data() {
     return {
       id: '',
+      name: '',
       password: '',
       message: ''
     }
@@ -55,14 +53,24 @@ export default {
   destroyed() {},
   // 비반응적 속성(Non-Reactive Properties) (시스템의 반응성과 관계 없는 인스턴스 속성을 지정하는 옵션)
   methods: {
-    async login() {
+    async register() {
+      console.log('Register.register')
+      const reqBody = {
+        id: this.id,
+        name: this.name,
+        password: this.password
+      }
+
       try {
-        const resToken = await authApi.login(this.id, this.password)
-        console.log('Login.login resToken:', resToken)
-        this.$store.commit('authModule/SET_TOKEN', resToken.data)
+        const resRegister = await accountApi.register(reqBody)
+
+        const token = resRegister.data
+        console.log('Register.register token:', token)
+
+        this.$store.commit('authModule/SET_TOKEN', token)
         await this.$router.push({ name: 'home' })
       } catch (error) {
-        console.log('Login.login error', error)
+        console.error('Register.register error:', error)
         this.message = error.response.data.message
       }
     }

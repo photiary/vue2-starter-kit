@@ -1,4 +1,5 @@
 import mockAdapters from '../mockAdapters'
+import { errorData } from './errorData'
 
 const data = {
   token: {
@@ -14,11 +15,29 @@ const data = {
     iss: '발급처',
     name: '더미',
     jti: '64207ec3-5a51-4f2c-bed4-3eb4833301f5'
+  },
+  account: {
+    id: 'dummy',
+    password: 'dummy',
+    name: '더미',
+    gender: 'M',
+    mobile: '01012345678'
   }
 }
 
 function init() {
-  mockAdapters.basicAuth.onPost('/login').reply(() => [200, data.token])
+  mockAdapters.basicAuth.onPost('/login').reply(config => {
+    console.log('authData.login config:', config)
+    const reqBody = JSON.parse(config.data)
+    if (
+      data.account.id === reqBody.id &&
+      data.account.password === reqBody.password
+    ) {
+      return [200, data.token]
+    } else {
+      return [401, errorData.error0001]
+    }
+  })
 }
 
 export default { init }

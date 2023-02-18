@@ -23,6 +23,7 @@ function bearerTokenUnauthorizedErrorHandler(error) {
     if (error.response.data.errorCode === API_ERROR_0002) {
       // TODO 리프레쉬 토큰
     } else {
+      // TODO 'Promise returned from dispatch is ignored'
       store.dispatch('authModule/logout')
     }
   }

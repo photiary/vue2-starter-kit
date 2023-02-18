@@ -1,3 +1,6 @@
+/**
+ * API 응답 에러 공용 데이터로 다른 Mock data에서 참조하여 사용한다.
+ */
 export const errorData = {
   error0001: {
     code: '0001',

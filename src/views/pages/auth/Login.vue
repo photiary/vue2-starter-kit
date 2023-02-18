@@ -25,7 +25,6 @@
         <p>
           <button
             type="submit"
-            @click="login()"
             :disabled="invalid">
             로그인
           </button>

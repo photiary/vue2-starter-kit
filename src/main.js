@@ -7,6 +7,9 @@ import store from './store'
 // Axios Mock Adapter
 import '@/mock/index'
 
+// Validation rules
+import '@/utils/validations/validations'
+
 Vue.config.productionTip = false
 
 new Vue({

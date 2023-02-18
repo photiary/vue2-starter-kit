@@ -1,19 +1,38 @@
 <template>
   <div>
+    <ValidationObserver v-slot="{ invalid }">
+      <form @submit.prevent="login">
+        <ValidationProvider
+          name="ID"
+          rules="required"
+          v-slot="{ errors }">
+          ID:
+          <input
+            type="text"
+            v-model="id" />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <ValidationProvider
+          name="Password"
+          rules="required|password"
+          v-slot="{ errors }">
+          Password:
+          <input
+            type="password"
+            v-model="password" />
+          <span>{{ errors[0] }}</span>
+        </ValidationProvider>
+        <p>
+          <button
+            type="submit"
+            @click="login()"
+            :disabled="invalid">
+            로그인
+          </button>
+        </p>
+      </form>
+    </ValidationObserver>
     <p>
-      id:
-      <input
-        type="text"
-        v-model="id" />
-      password:
-      <input
-        type="password"
-        v-model="password" />
-      <button
-        type="button"
-        @click="login()">
-        로그인
-      </button>
       <router-link :to="{ name: 'register' }">
         <button type="button">회원가입</button>
       </router-link>
@@ -24,12 +43,13 @@
 
 <script>
 import authApi from '@/axios/api/authApi'
+import { ValidationProvider, ValidationObserver } from 'vee-validate'
 
 export default {
   // 전역 인지(Global Awareness) (컴포넌트 바깥의 지식을 필요로 하는 옵션)
   name: 'Login',
   // 템플릿 의존성(Template Dependencies) (템플릿에 이용되는 요소들을 지정하는 옵션)
-  components: {},
+  components: { ValidationProvider, ValidationObserver },
   // 컴포지션(Composition) (다른 컴포넌트의 속성을 가져와 합치는 옵션)
   mixins: [],
   // 인터페이스(Interface) (컴포넌트의 인터페이스를 지정하는 옵션)

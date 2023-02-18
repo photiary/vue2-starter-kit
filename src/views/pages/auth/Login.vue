@@ -77,7 +77,7 @@ export default {
     async login() {
       try {
         const resToken = await authApi.login(this.id, this.password)
-        console.log('Login.login resToken:', resToken)
+        console.log('Login.vue.login resToken:', resToken)
         this.$store.commit('authModule/SET_TOKEN', resToken.data)
         await this.$router.push({ name: 'home' })
       } catch (error) {

@@ -28,7 +28,7 @@ export default {
   beforeCreate() {},
   async created() {
     const resAccount = await accountApi.fetchAccount()
-    console.log('Home.created resAccount:', resAccount)
+    console.log('Home.vue.created resAccount:', resAccount)
     this.account = resAccount.data
   },
   beforeMount() {},

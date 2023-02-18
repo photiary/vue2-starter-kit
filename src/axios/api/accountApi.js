@@ -4,7 +4,7 @@ import axiosInstances from '../axiosInstances'
  * 신규 계정을 등록한다.
  *
  * Mock 파일: /mock/data/accountData.js > basicAuth.onPost('/account/register')
- * @param reqBody 계정 정보
+ * @param {Object} reqBody 계정 정보
  * @returns {Object} 인증 토큰
  */
 function register(reqBody) {

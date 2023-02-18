@@ -7,7 +7,7 @@
 - vue 2.6.14
 
 ## 🍔 프로젝트 생성
-참조사이트: https://cli.vuejs.org/
+참조 링크: https://cli.vuejs.org/
 ```shell
 # Vue CLI 설치 
 npm install -g @vue/cli
@@ -38,10 +38,11 @@ eslint --init
 npm i @vue/eslint-config-prettier --save-dev
 npm i eslint-plugin-prettier --save-dev
 ```
-- 파일 수정
-    - `package.json`에서 `eslintConfig` 항목을 제거한다.
-    - `.eslintrc.js`에 다음 스크립트를 덮어쓰기한다.
-    - ESLint & Prettier에 의해 코드가 변경되기 때문에, Vue CLI로 자동 생성된 파일들을 다시 저장한다.
+
+🔸 파일 수정
+- `package.json`에서 `eslintConfig` 항목을 제거한다.
+- `.eslintrc.js`에 다음 스크립트를 덮어쓰기한다.
+- ESLint & Prettier에 의해 코드가 변경되기 때문에, Vue CLI로 자동 생성된 파일들을 다시 저장한다.
 ```javascript
 module.exports = {
   root: true,
@@ -113,4 +114,25 @@ npm i lodash
 
 ## 🥓 Axios & Mock
 
-## Docker & Jenkins
+## 🍗 Docker & Jenkins
+
+## 🥠 개발
+🔸 공용 Constants 선언
+  - 공용 상수 선언은 각 모듈과 같은 디렉토리에 파일을 생성한다.
+  - `named export`를 이용하여 내보내기를 한다.
+```javascript
+export const API_ERROR_0001 = '0001'
+```
+
+🔸 Mock을 이용한 API 단위 테스트 
+- `~Data.js`에서 사용하는 Mock adapter는 `~Api.js` 에서 사용하는 같은 Axios instance를 사용한다.
+```javascript
+// ~Api.js에서 bearerToken를 사용할 경우
+axiosInstances.bearerToken.post('/endpoint', requestBody)
+
+// ~Data.js에서도 bearerToken를 사용한다.
+mockAdapters.bearerToken.onPost('/endpoint').reply()
+
+```
+
+🔸 초기상태, 요청중, 완료, 실패

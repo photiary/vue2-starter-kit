@@ -3,7 +3,16 @@ import store from '@/store/index'
 import authConstants from './authConstants'
 import errorHandlers from '@/axios/errorHandlers'
 
-// 참조 링크: https://axios-http.com/kr/docs/instance
+/**
+ * 디폴트 Headers를 갖는 Axios instance를 생성한다.
+ *
+ * GET Accept: application/json
+ *
+ * POST Content-Type: application/json
+ *
+ * @see {@link https://axios-http.com/kr/docs/instance}
+ * @returns {AxiosInstance} Axios instance
+ */
 function createSimpleInstance() {
   const axios = Axios.create({
     baseURL: process.env.VUE_APP_URL_SERVICE
@@ -13,7 +22,13 @@ function createSimpleInstance() {
   return axios
 }
 
-// 참조 링크: https://axios-http.com/kr/docs/interceptors
+/**
+ * 인증 Header 추가, Error handler 등 API의 공용 처리를 담당한다.
+ * @see {@link https://axios-http.com/kr/docs/interceptors}
+ * @param {AxiosInstance} axios Axios instance
+ * @param {boolean} isBasicAuth true: Basic Auth | false: Bearer Token
+ * @returns {AxiosInstance} Axios instance
+ */
 function addAuthInterceptor(axios, isBasicAuth) {
   // 요청 인터셉터 추가하기
   axios.interceptors.request.use(

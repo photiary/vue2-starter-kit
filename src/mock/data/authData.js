@@ -18,7 +18,7 @@ const data = {
   },
   account: {
     id: 'dummy',
-    password: 'dummy',
+    password: 'Dummy12!@',
     name: '더미',
     gender: 'M',
     mobile: '01012345678'

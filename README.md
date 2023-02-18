@@ -99,7 +99,7 @@ npm i lodash
 
 ## 🍿 디렉토리 구조
 ```
-+-- api (Server API 호출)
++-- axios (Server API 호출)
 +-- mock (테스트 API) 
 |   +-- data (테스트 데이터)
 +-- router (Vue-router)
@@ -107,6 +107,7 @@ npm i lodash
 +-- store (Vuex)
 |   +-- modules
 +-- utils (자주사용하는 공통 function)
+|   +-- validations (입력 데이터 검증)
 +-- views (화면 Vue 컴포넌트)
 |   +-- components
 |   +-- pages
@@ -122,6 +123,30 @@ npm i lodash
   - `named export`를 이용하여 내보내기를 한다.
 ```javascript
 export const API_ERROR_0001 = '0001'
+```
+
+🔸 입력 데이터 검증
+
+`vee-validate` 패키지를 사용한다.
+
+- vee-validate 제공 기본 룰
+  
+  참조 링크: https://vee-validate.logaretm.com/v3/guide/rules.html#rules
+- 기본 룰의 메시지를 수정를 수정할 경우, `validations.js`에 덮어쓰기 처리를 추가한다.
+```javascript
+extend('required', {
+  ...required,
+  message: 'This field is required'
+})
+```
+- 사용자 지정 룰은 `validations.js`에 추가 사용한다.
+```javascript
+extend('positive', value => {
+  if (value >= 0) {
+    return true
+  }
+  return 'This field must be a positive number'
+})
 ```
 
 🔸 Mock을 이용한 API 단위 테스트 

@@ -14,7 +14,7 @@
         </ValidationProvider>
         <ValidationProvider
           name="Password"
-          rules="required"
+          rules="required|password"
           v-slot="{ errors }">
           Password:
           <input

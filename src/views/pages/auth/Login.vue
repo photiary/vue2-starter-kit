@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ValidationObserver v-slot="{ invalid }">
+    <validation-observer v-slot="{ invalid }">
       <form @submit.prevent="login">
-        <ValidationProvider
+        <validation-provider
           name="ID"
           rules="required"
           v-slot="{ errors }">
@@ -11,8 +11,8 @@
             type="text"
             v-model="id" />
           <span>{{ errors[0] }}</span>
-        </ValidationProvider>
-        <ValidationProvider
+        </validation-provider>
+        <validation-provider
           name="Password"
           rules="required|password"
           v-slot="{ errors }">
@@ -21,7 +21,7 @@
             type="password"
             v-model="password" />
           <span>{{ errors[0] }}</span>
-        </ValidationProvider>
+        </validation-provider>
         <p>
           <button
             type="submit"
@@ -30,7 +30,7 @@
           </button>
         </p>
       </form>
-    </ValidationObserver>
+    </validation-observer>
     <p>
       <router-link :to="{ name: 'register' }">
         <button type="button">회원가입</button>

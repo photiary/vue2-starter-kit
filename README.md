@@ -42,7 +42,9 @@
 ## 🍕 프로젝트 개발 환경
 - Node.js v18.14.0
 - npm 9.3.0
-- vue 2.6.14
+- Vue.js 2.7.14
+
+  Vue.js Vue2의 LTS 지원은 2023년 12월 31일에 종료되므로 Vue 3로 업그레이드 필요하다. 참조 링크: https://v2.vuejs.org/lts/
 
 ## 🍔 프로젝트 생성
 참조 링크: https://cli.vuejs.org/

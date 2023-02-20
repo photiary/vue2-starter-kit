@@ -56,8 +56,8 @@ export default {
   // 지역 상태(Local State) (반응적인 지역 속성들을 설정하는 옵션)
   data() {
     return {
-      id: '',
-      password: '',
+      id: 'dummy',
+      password: 'Dummy12!@',
       message: ''
     }
   },

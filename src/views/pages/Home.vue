@@ -2,6 +2,7 @@
   <div>
     <h1>Home</h1>
     <p>{{ account }}</p>
+    <p>날짜: {{ account?.createAt | simpleDate }}</p>
   </div>
 </template>
 

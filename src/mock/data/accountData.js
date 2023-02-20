@@ -20,21 +20,18 @@ const data = {
     id: 'dummy',
     name: '더미',
     gender: 'M',
-    mobile: '01012345678'
+    mobile: '01012345678',
+    createAt: '2023-01-02T10:10:35+09:00'
   }
 }
 
 function init() {
   mockAdapters.basicAuth.onPost('/account/register').reply(config => {
     const reqBody = JSON.parse(config.data)
-    if (
-      reqBody.id === null ||
-      reqBody.name === null ||
-      reqBody.password === null
-    ) {
-      return [400, errorData.error1002]
-    } else {
+    if (reqBody.id && reqBody.name && reqBody.password) {
       return [200, data.token]
+    } else {
+      return [400, errorData.error1002]
     }
   })
   mockAdapters.bearerToken.onGet('/account').reply(config => {

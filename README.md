@@ -198,8 +198,11 @@ axiosInstances.bearerToken.post('/endpoint', requestBody)
 
 // ~Data.js에서도 bearerToken를 사용한다.
 mockAdapters.bearerToken.onPost('/endpoint').reply()
-
 ```
+
+🔸 데이터 형식 지정
+- `filters.js`에 데이터 형식을 추가하여 전역 Vue에서 사용한다. (참조 링크: https://v2.vuejs.org/v2/guide/filters.html)
+- `Filters` 기능은 Vue3의 마이그레이션 대상이다. (참조 링크: https://v3-migration.vuejs.org/breaking-changes/filters.html#global-filters)
 
 🔸 초기상태, 요청중, 완료, 실패
 

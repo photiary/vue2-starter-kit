@@ -1,35 +1,37 @@
 <template>
   <div>
     <validation-observer v-slot="{ invalid }">
-      <form @submit.prevent="login">
-        <validation-provider
-          name="ID"
-          rules="required"
-          v-slot="{ errors }">
-          ID:
-          <input
-            type="text"
-            v-model="id" />
-          <span>{{ errors[0] }}</span>
-        </validation-provider>
-        <validation-provider
-          name="Password"
-          rules="required|password"
-          v-slot="{ errors }">
-          Password:
-          <input
-            type="password"
-            v-model="password" />
-          <span>{{ errors[0] }}</span>
-        </validation-provider>
-        <p>
-          <button
-            type="submit"
-            :disabled="invalid">
-            로그인
-          </button>
-        </p>
-      </form>
+      <!-- <form>태그의 특성으로 엔터키를 누르면 submit 이벤트가 발생하므로 <form>태그 사용에 적합한지 검토한다. -->
+      <validation-provider
+        name="ID"
+        rules="required"
+        v-slot="{ errors }">
+        ID:
+        <input
+          type="text"
+          :value="id"
+          @input="changeInputValue($event, 'id')" />
+        <span>{{ errors[0] }}</span>
+      </validation-provider>
+      <validation-provider
+        name="Password"
+        rules="required|password"
+        v-slot="{ errors }">
+        Password:
+        <input
+          type="password"
+          :value="password"
+          @input="changeInputValue($event, 'password')" />
+        <span>{{ errors[0] }}</span>
+      </validation-provider>
+      <p>
+        <button
+          type="button"
+          @click="login"
+          :disabled="invalid">
+          로그인
+        </button>
+      </p>
     </validation-observer>
     <p>
       <router-link :to="{ name: 'register' }">
@@ -84,6 +86,11 @@ export default {
         console.log('Login.login error', error)
         this.message = error.response.data.message
       }
+    },
+    // IME(한글 키보드)는 v-model을 사용할 수 없기 때문에, input 이벤트로 처리한다.
+    // <input>태그와 해당 함수는 공통 컴포넌트 개발 필요
+    changeInputValue(event, propertyName) {
+      this[propertyName] = event.target.value
     }
   }
 }

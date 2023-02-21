@@ -172,7 +172,7 @@ export const API_ERROR_0001 = '0001'
 ```
 
 🔸 입력 데이터 검증
-- IME(한글 키보드)와 `v-model`과의 관계 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
+- IME(한글 키보드)와 `v-model`과의 관계로 `input` 이벤트 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
 - `vee-validate` 패키지를 사용한다.
 - vee-validate 제공 기본 룰 (참조 링크: https://vee-validate.logaretm.com/v3/guide/rules.html#rules)
 - 기본 룰의 메시지를 수정를 수정할 경우, `validations.js`에 덮어쓰기 처리를 추가한다.

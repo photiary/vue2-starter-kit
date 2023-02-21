@@ -5,6 +5,7 @@
     <div v-else>
       <p>{{ account }}</p>
       <p>날짜: {{ account?.createAt | simpleDate }}</p>
+      <p>{{ message }}</p>
     </div>
   </div>
 </template>
@@ -24,7 +25,8 @@ export default {
   data() {
     return {
       loading: false,
-      account: null
+      account: null,
+      message: ''
     }
   },
   computed: {},
@@ -35,9 +37,13 @@ export default {
     // API 호출 전에 '불러오는 중...'을 표시하도록 한다.
     this.loading = true
 
-    const resAccount = await accountApi.fetchAccount()
-    console.log('Home.vue.created resAccount:', resAccount)
-    this.account = resAccount.data
+    try {
+      const resAccount = await accountApi.fetchAccount()
+      this.account = resAccount.data
+    } catch (error) {
+      console.log('Home.vue.created error:', error)
+      this.message = error.response.data.message
+    }
 
     // API 호출 마지막 응답에 데이터를 표시하도록 한다.
     this.loading = false

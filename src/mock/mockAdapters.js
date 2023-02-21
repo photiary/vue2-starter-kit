@@ -6,11 +6,11 @@ function createSimpleMock(axios) {
   return new AxiosMockAdapter(axios, { delayResponse: 2000 })
 }
 
-let basicAuth = null
-let bearerToken = null
+let basicAuthClient = null
+let bearerTokenClient = null
 if (JSON.parse(process.env.VUE_APP_USE_MOCK)) {
-  basicAuth = createSimpleMock(axiosInstances.basicAuth)
-  bearerToken = createSimpleMock(axiosInstances.bearerToken)
+  basicAuthClient = createSimpleMock(axiosInstances.basicAuthClient)
+  bearerTokenClient = createSimpleMock(axiosInstances.bearerTokenClient)
 }
 
-export default { basicAuth, bearerToken }
+export default { basicAuthClient, bearerTokenClient }

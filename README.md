@@ -172,7 +172,7 @@ export const API_ERROR_0001 = '0001'
 ```
 
 🔸 입력 데이터 검증
-- IME(한글 키보드)와 `v-model`과의 관계 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
+- IME(한글 키보드)와 `v-model`과의 관계로 `input` 이벤트 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
 - `vee-validate` 패키지를 사용한다.
 - vee-validate 제공 기본 룰 (참조 링크: https://vee-validate.logaretm.com/v3/guide/rules.html#rules)
 - 기본 룰의 메시지를 수정를 수정할 경우, `validations.js`에 덮어쓰기 처리를 추가한다.
@@ -195,11 +195,11 @@ extend('positive', value => {
 🔸 Mock을 이용한 API 단위 테스트 
 - `~Data.js`에서 사용하는 Mock adapter는 `~Api.js` 에서 사용하는 같은 Axios instance를 사용한다.
 ```javascript
-// ~Api.js에서 bearerToken를 사용할 경우
-axiosInstances.bearerToken.post('/endpoint', requestBody)
+// ~Api.js에서 bearerTokenClient를 사용할 경우
+axiosInstances.bearerTokenClient.post('/endpoint', requestBody)
 
-// ~Data.js에서도 bearerToken를 사용한다.
-mockAdapters.bearerToken.onPost('/endpoint').reply()
+// ~Data.js에서도 bearerTokenClient를 사용한다.
+mockAdapters.bearerTokenClient.onPost('/endpoint').reply()
 ```
 
 🔸 데이터 형식 지정

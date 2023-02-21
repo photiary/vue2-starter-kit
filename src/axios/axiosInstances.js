@@ -79,7 +79,7 @@ function createBearerTokenInstance() {
   return addAuthInterceptor(axios, false)
 }
 
-const basicAuth = createBasicAuthInstance()
-const bearerToken = createBearerTokenInstance()
+const basicAuthClient = createBasicAuthInstance()
+const bearerTokenClient = createBearerTokenInstance()
 
-export default { basicAuth, bearerToken }
+export default { basicAuthClient, bearerTokenClient }

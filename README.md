@@ -28,11 +28,11 @@
   - [ ] 초기 상태, 요청 중, 완료, 실패
   - [ ] 화면 Layout
   - [ ] Dialog(대화상자) modal
-  - [ ] 데이터 표시 서식(`Vue.js Filters`)
-- [ ] 공용 메시지(코드) 관리
+  - [ ] 데이터 표시 서식(Vue.js `Filters`)
+- [ ] 전역 메시지(코드) 관리
   - [ ] Front-end
   - [ ] Back-end
-- [ ] 공용 상수(코드) 관리
+- [ ] 전역 상수(코드) 관리
   - [ ] Front-end
   - [ ] Back-end
 - [ ] 웹 스토리지(`sessionStorage` 또는 `localStorage`)
@@ -123,7 +123,7 @@ module.exports = {
 ```
 
 ## 🌭 추가 패키지
-개발에 편의를 돕는 js 라이브러리들을 추가한다. Vuex, Vue-router, vee-validate는 Vue2를 사용하므로 버전을 지정한다.
+개발에 편의를 돕는 js 패키지들을 추가한다. Vuex, Vue-router, vee-validate 등 특정 패키지는 Vue2에 맞는 버전을 지정한다.
 ```shell
 # Veu.js 최근 버전에 맞게 재설치
 npm i vue@2.7.14
@@ -131,6 +131,8 @@ npm i vuex@3.6.2
 npm i vuex-persist
 npm i vue-router@3.6.5
 npm i vee-validate@3.4.14
+# Vue component를 지정한 위치에 렌더링하게 도와주는 패키지(모달에 사용) 
+npm i portal-vue@2.1.7
 npm i axios
 npm i axios-mock-adapter
 # URL querystring 확장 패키지 
@@ -162,15 +164,15 @@ npm i lodash
 
 ---
 ## 🥠 개발 가이드라인
-🔸 공용 Constants 선언
-  - 공용 상수 선언은 각 모듈과 같은 디렉토리에 파일을 생성한다.
+🔸 전역 Constants 선언
+  - 전역 상수 선언은 각 모듈과 같은 디렉토리에 파일을 생성한다.
   - `named export`를 이용하여 내보내기를 한다.
 ```javascript
 export const API_ERROR_0001 = '0001'
 ```
 
 🔸 입력 데이터 검증
-- IME와 `v-model`과의 관계 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
+- IME(한글 키보드)와 `v-model`과의 관계 검토 (참조 링크: https://vuejs.org/guide/essentials/forms.html#text)
 - `vee-validate` 패키지를 사용한다.
 - vee-validate 제공 기본 룰 (참조 링크: https://vee-validate.logaretm.com/v3/guide/rules.html#rules)
 - 기본 룰의 메시지를 수정를 수정할 경우, `validations.js`에 덮어쓰기 처리를 추가한다.

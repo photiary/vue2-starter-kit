@@ -7,6 +7,7 @@ const getDefaultState = () => {
 export default {
   namespaced: true,
   state: getDefaultState(),
+  // Computed properties
   getters: {
     isLogin(state) {
       return state.token !== null
@@ -15,7 +16,7 @@ export default {
       return getters.isLogin ? state.token.access_token : null
     }
   },
-  // Async, Dispatch, Backend API
+  // Async, Dispatch, Backend API call
   actions: {
     logout({ commit }) {
       commit('INIT_STATE')

@@ -26,7 +26,7 @@ const data = {
 }
 
 function init() {
-  mockAdapters.basicAuth.onPost('/account/register').reply(config => {
+  mockAdapters.basicAuthClient.onPost('/account/register').reply(config => {
     const reqBody = JSON.parse(config.data)
     if (reqBody.id && reqBody.name && reqBody.password) {
       return [200, data.token]
@@ -34,7 +34,7 @@ function init() {
       return [400, errorData.error1002]
     }
   })
-  mockAdapters.bearerToken.onGet('/account').reply(config => {
+  mockAdapters.bearerTokenClient.onGet('/account').reply(config => {
     console.log('accountData.account config:', config)
     return [200, data.account]
   })

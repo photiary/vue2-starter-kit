@@ -195,11 +195,11 @@ extend('positive', value => {
 🔸 Mock을 이용한 API 단위 테스트 
 - `~Data.js`에서 사용하는 Mock adapter는 `~Api.js` 에서 사용하는 같은 Axios instance를 사용한다.
 ```javascript
-// ~Api.js에서 bearerToken를 사용할 경우
-axiosInstances.bearerToken.post('/endpoint', requestBody)
+// ~Api.js에서 bearerTokenClient를 사용할 경우
+axiosInstances.bearerTokenClient.post('/endpoint', requestBody)
 
-// ~Data.js에서도 bearerToken를 사용한다.
-mockAdapters.bearerToken.onPost('/endpoint').reply()
+// ~Data.js에서도 bearerTokenClient를 사용한다.
+mockAdapters.bearerTokenClient.onPost('/endpoint').reply()
 ```
 
 🔸 데이터 형식 지정

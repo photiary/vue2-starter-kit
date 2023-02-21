@@ -26,7 +26,7 @@ const data = {
 }
 
 function init() {
-  mockAdapters.basicAuth.onPost('/login').reply(config => {
+  mockAdapters.basicAuthClient.onPost('/login').reply(config => {
     console.log('authData.login config:', config)
     const reqBody = JSON.parse(config.data)
     if (

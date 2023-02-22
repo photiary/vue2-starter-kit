@@ -14,7 +14,10 @@ const routes = [
   ...homeRoute,
   {
     path: '*',
-    redirect: 'error-404'
+    redirect: () => {
+      // TODO localStorage 등에서 로그인 정보를 제거하나.
+      return { name: 'login' }
+    }
   }
 ]
 

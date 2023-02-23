@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import VuexPersist from 'vuex-persist'
+import VuexPersistence from 'vuex-persist'
 
 // modules
 import authModule from '@/store/modules/authModule'
@@ -10,7 +10,7 @@ Vue.use(Vuex)
 // localStorage는 웹 브라우저를 닫았다 열어도 데이터가 남아있기 때문에,
 // PC와 같은 환경에서는 sessionStorage 사용을 검토한다.
 // Web storage 참조 링크: https://developer.mozilla.org/ko/docs/Web/API/Web_Storage_API
-const vuexLocalStorage = new VuexPersist({
+const vuexLocal = new VuexPersistence({
   key: 'vuex',
   storage: window.localStorage,
   reducer: state => ({
@@ -22,5 +22,5 @@ const vuexLocalStorage = new VuexPersist({
 export default new Vuex.Store({
   state: {},
   modules: { authModule },
-  plugins: [vuexLocalStorage.plugin]
+  plugins: [vuexLocal.plugin]
 })

@@ -4,6 +4,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 3rd party 플러그인
+import './plugins/dayjs'
+
 // Axios Mock Adapter
 import '@/mock/index'
 

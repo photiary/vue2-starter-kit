@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import store from '@/store/index'
 
 // routes
-import authRoute from './routes/authRoute'
-import homeRoute from './routes/homeRoute'
+import authRoute from '@/router/routes/authRoute'
+import homeRoute from '@/router/routes/homeRoute'
 
 Vue.use(VueRouter)
 
@@ -14,7 +14,10 @@ const routes = [
   ...homeRoute,
   {
     path: '*',
-    redirect: 'error-404'
+    redirect: () => {
+      // TODO localStorage 등에서 로그인 정보를 제거하나.
+      return { name: 'login' }
+    }
   }
 ]
 

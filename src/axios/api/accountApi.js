@@ -1,4 +1,4 @@
-import axiosInstances from '../axiosInstances'
+import axiosInstances from '@/axios/axiosInstances'
 
 /**
  * 신규 계정을 등록한다.

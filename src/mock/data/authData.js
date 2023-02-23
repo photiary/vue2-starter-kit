@@ -1,5 +1,5 @@
-import mockAdapters from '../mockAdapters'
-import { errorData } from './errorData'
+import mockAdapters from '@/mock/mockAdapters'
+import { errorData } from '@/mock/data/errorData'
 
 const data = {
   token: {

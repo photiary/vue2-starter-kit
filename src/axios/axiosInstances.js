@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import store from '@/store/index'
-import authConstants from './authConstants'
+import authConstants from '@/axios/authConstants'
 import errorHandlers from '@/axios/errorHandlers'
 
 /**
@@ -13,9 +13,9 @@ import errorHandlers from '@/axios/errorHandlers'
  * @see {@link https://axios-http.com/kr/docs/instance}
  * @returns {AxiosInstance} Axios instance
  */
-function createSimpleInstance() {
+function createSimpleInstance(url) {
   const axios = Axios.create({
-    baseURL: process.env.VUE_APP_URL_SERVICE
+    baseURL: url
   })
   axios.defaults.headers.get['Accept'] = 'application/json'
   axios.defaults.headers.post['Content-Type'] = 'application/json'
@@ -70,16 +70,21 @@ function addAuthInterceptor(axios, isBasicAuth) {
 }
 
 function createBasicAuthInstance() {
-  const axios = createSimpleInstance()
+  const axios = createSimpleInstance(process.env.VUE_APP_URL_SERVICE)
   return addAuthInterceptor(axios, true)
 }
 
 function createBearerTokenInstance() {
-  const axios = createSimpleInstance()
+  const axios = createSimpleInstance(process.env.VUE_APP_URL_SERVICE)
   return addAuthInterceptor(axios, false)
 }
 
 const basicAuthClient = createBasicAuthInstance()
 const bearerTokenClient = createBearerTokenInstance()
 
-export default { basicAuthClient, bearerTokenClient }
+export default {
+  createSimpleInstance,
+  addAuthInterceptor,
+  basicAuthClient,
+  bearerTokenClient
+}

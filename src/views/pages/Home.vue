@@ -1,8 +1,17 @@
 <template>
   <div>
     <h1>Home</h1>
-    <p>{{ account }}</p>
-    <p>날짜: {{ account?.createAt | simpleDate }}</p>
+    <div v-if="loading">불러오는 중...</div>
+    <div v-else>
+      <p>{{ account }}</p>
+      <p>날짜: {{ account?.createAt | simpleDate }}</p>
+      <p>{{ message }}</p>
+    </div>
+    <button
+      type="button"
+      @click="logout">
+      로그아웃
+    </button>
   </div>
 </template>
 
@@ -20,7 +29,9 @@ export default {
   // 지역 상태(Local State) (반응적인 지역 속성들을 설정하는 옵션)
   data() {
     return {
-      account: null
+      loading: false,
+      account: null,
+      message: ''
     }
   },
   computed: {},
@@ -28,9 +39,19 @@ export default {
   watch: {},
   beforeCreate() {},
   async created() {
-    const resAccount = await accountApi.fetchAccount()
-    console.log('Home.vue.created resAccount:', resAccount)
-    this.account = resAccount.data
+    // API 호출 전에 '불러오는 중...'을 표시하도록 한다.
+    this.loading = true
+
+    try {
+      const resAccount = await accountApi.fetchAccount()
+      this.account = resAccount.data
+    } catch (error) {
+      console.log('Home.vue.created error:', error)
+      this.message = error.response.data.message
+    }
+
+    // API 호출 마지막 응답에 데이터를 표시하도록 한다.
+    this.loading = false
   },
   beforeMount() {},
   mounted() {},
@@ -39,7 +60,12 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   // 비반응적 속성(Non-Reactive Properties) (시스템의 반응성과 관계 없는 인스턴스 속성을 지정하는 옵션)
-  methods: {}
+  methods: {
+    logout() {
+      this.$store.dispatch('authModule/logout')
+      this.$router.push({ name: 'login' })
+    }
+  }
 }
 </script>
 

@@ -88,7 +88,7 @@ export default {
       }
     },
     // IME(한글 키보드)는 v-model을 사용할 수 없기 때문에, input 이벤트로 처리한다.
-    // <input>태그와 해당 함수는 공통 컴포넌트 개발 필요
+    // TODO <input>태그와 해당 함수는 공통 컴포넌트 개발 필요
     changeInputValue(event, propertyName) {
       this[propertyName] = event.target.value
     }

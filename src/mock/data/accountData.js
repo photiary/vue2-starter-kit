@@ -1,5 +1,5 @@
-import mockAdapters from '../mockAdapters'
-import { errorData } from './errorData'
+import mockAdapters from '@/mock/mockAdapters'
+import { errorData } from '@/mock/data/errorData'
 
 const data = {
   token: {
@@ -36,7 +36,11 @@ function init() {
   })
   mockAdapters.bearerTokenClient.onGet('/account').reply(config => {
     console.log('accountData.account config:', config)
+    // 주석을 제거해서 응답 에러 테스트를 진행한다.
     return [200, data.account]
+    // return [401, errorData.error0001]
+    // return [401, errorData.error0002]
+    // return [404, errorData.error2001]
   })
 }
 

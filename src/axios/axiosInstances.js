@@ -82,4 +82,9 @@ function createBearerTokenInstance() {
 const basicAuthClient = createBasicAuthInstance()
 const bearerTokenClient = createBearerTokenInstance()
 
-export default { basicAuthClient, bearerTokenClient }
+export default {
+  createSimpleInstance,
+  addAuthInterceptor,
+  basicAuthClient,
+  bearerTokenClient
+}

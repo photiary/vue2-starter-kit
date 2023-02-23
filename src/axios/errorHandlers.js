@@ -8,7 +8,7 @@ import { API_ERROR_0002 } from '@/axios/errorConstants'
  */
 function basicAuthUnauthorizedErrorHandler(error) {
   if (error.response.status === 401) {
-    // 공통 인증 실패 처리
+    // TODO 에러 핸들러에서 처리후 API 호출하는 곳까지 error 가 반환되지 않도록 수정
     console.log('errorHandler.basicAuthUnauthorizedErrorHandler error:', error)
   }
 }
@@ -28,8 +28,9 @@ function bearerTokenUnauthorizedErrorHandler(error) {
     )
     // 에러 처리
     if (error.response.data.errorCode === API_ERROR_0002) {
-      // TODO 리프레쉬 토큰
+      // TODO 리프레시 토큰을 요청하고, 3회까지 재요청을 한다.
     } else {
+      // TODO 에러 핸들러에서 처리후 API 호출하는 곳까지 error 가 반환되지 않도록 수정
       // TODO 'Promise returned from dispatch is ignored'
       store.dispatch('authModule/logout')
     }

@@ -1,4 +1,4 @@
-import axiosInstances from '../axiosInstances'
+import axiosInstances from '@/axios/axiosInstances'
 
 /**
  * 로그인을 진행한다.

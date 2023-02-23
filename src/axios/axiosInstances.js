@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import store from '@/store/index'
-import authConstants from './authConstants'
+import authConstants from '@/axios/authConstants'
 import errorHandlers from '@/axios/errorHandlers'
 
 /**

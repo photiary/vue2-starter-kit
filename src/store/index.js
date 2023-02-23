@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 
 // modules
-import authModule from './modules/authModule'
+import authModule from '@/store/modules/authModule'
 
 Vue.use(Vuex)
 

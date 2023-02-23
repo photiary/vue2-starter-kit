@@ -1,5 +1,5 @@
 import store from '@/store/index'
-import { API_ERROR_0002 } from './errorConstants'
+import { API_ERROR_0002 } from '@/axios/errorConstants'
 
 /**
  * Basic Auth 에러 핸들러

@@ -1,7 +1,7 @@
 import { extend, localize } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules'
 import ko from 'vee-validate/dist/locale/ko.json'
-import validators from './validators'
+import validators from '@/utils/validations/validators'
 
 // 메시지 로컬라이징
 localize('ko', ko)

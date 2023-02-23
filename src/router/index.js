@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import store from '@/store/index'
 
 // routes
-import authRoute from './routes/authRoute'
-import homeRoute from './routes/homeRoute'
+import authRoute from '@/router/routes/authRoute'
+import homeRoute from '@/router/routes/homeRoute'
 
 Vue.use(VueRouter)
 

@@ -7,6 +7,11 @@
       <p>날짜: {{ account?.createAt | simpleDate }}</p>
       <p>{{ message }}</p>
     </div>
+    <button
+      type="button"
+      @click="logout">
+      로그아웃
+    </button>
   </div>
 </template>
 
@@ -55,7 +60,12 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   // 비반응적 속성(Non-Reactive Properties) (시스템의 반응성과 관계 없는 인스턴스 속성을 지정하는 옵션)
-  methods: {}
+  methods: {
+    logout() {
+      this.$store.dispatch('authModule/logout')
+      this.$router.push({ name: 'login' })
+    }
+  }
 }
 </script>
 

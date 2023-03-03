@@ -48,10 +48,10 @@ export default {
     } catch (error) {
       console.log('Home.vue.created error:', error)
       this.message = error.response.data.message
+    } finally {
+      // API 호출 마지막 응답에 데이터를 표시하도록 한다.
+      this.loading = false
     }
-
-    // API 호출 마지막 응답에 데이터를 표시하도록 한다.
-    this.loading = false
   },
   beforeMount() {},
   mounted() {},
